@@ -1,29 +1,29 @@
 # Python venv + Streamlit Setup (Linux)
 
-Denne guide viser hvordan du opsætter et Python virtual environment (.venv) og kører en Streamlit app.
+This guide shows how to set up a Python virtual environment (.venv) and run a Streamlit app.
 
 ---
 
-# 1. Gå til dit projekt
+# 1. Go to your project
 
 ```bash
 cd ~/dev/python_test
 ls -a
 ```
 
-Kontroller at dine filer (fx app.py) findes i mappen.
+Make sure your files (e.g. app.py) exist in the folder.
 
 ---
 
-# 2. Opret virtual environment
+# 2. Create virtual environment
 
-Hvis der findes en gammel venv, slet den først:
+If an old venv exists, delete it first:
 
 ```bash
 rm -rf .venv
 ```
 
-Opret en ny venv:
+Create a new venv:
 
 ```bash
 python3 -m venv .venv
@@ -31,13 +31,13 @@ python3 -m venv .venv
 
 ---
 
-# 3. Tjek at venv er korrekt oprettet
+# 3. Verify the venv was created correctly
 
 ```bash
 ls -la .venv/bin
 ```
 
-Du skal se:
+You should see:
 
 * python
 * pip
@@ -45,17 +45,17 @@ Du skal se:
 
 ---
 
-# 4. Aktivér venv
+# 4. Activate venv
 
 ```bash
 source .venv/bin/activate
 ```
 
-Når det virker, ændres prompten til at vise (.venv).
+When it works, your prompt will change to show (.venv).
 
 ---
 
-# 5. Installér dependencies
+# 5. Install dependencies
 
 ```bash
 pip install streamlit numpy pandas
@@ -63,7 +63,7 @@ pip install streamlit numpy pandas
 
 ---
 
-# 6. Gem dependencies
+# 6. save dependencies
 
 ```bash
 pip freeze > requirements.txt
@@ -71,7 +71,7 @@ pip freeze > requirements.txt
 
 ---
 
-# 7. Kør Streamlit app
+# 7. Run Streamlit app
 
 ```bash
 streamlit run app.py
@@ -79,9 +79,9 @@ streamlit run app.py
 
 ---
 
-# 8. Genbrug projekt senere
+# 8. Reuse project later
 
-Når du åbner projektet igen:
+When you reopen the project:
 
 ```bash
 python3 -m venv .venv
@@ -93,13 +93,13 @@ pip install -r requirements.txt
 
 # 9. VS Code setup
 
-Åbn projektet:
+Open the project:
 
 ```bash
 code .
 ```
 
-Vælg interpreter:
+Select interpreter:
 
 * Ctrl + Shift + P
 * Python: Select Interpreter
@@ -107,17 +107,17 @@ Vælg interpreter:
 
 ---
 
-# 10. Typiske fejl
+# 10. Common issues
 
-Hvis pip ikke virker:
+If pip doesn’t work:
 
 ```bash
 python3 -m pip install package
 ```
 
-Hvis activate mangler:
+If activate is missing:
 
-Installér venv support:
+Install venv support:
 
 ```bash
 sudo apt install python3-venv
@@ -125,136 +125,6 @@ sudo apt install python3-venv
 
 ---
 
-# Resultat
+# Result
 
-Du har nu et isoleret Python miljø med reproducible dependencies og en fungerende Streamlit workflow.
-# Python venv + Streamlit Setup (Linux)
-
-Denne guide viser hvordan du opsætter et Python virtual environment (.venv) og kører en Streamlit app.
-
----
-
-# 1. Gå til dit projekt
-
-```bash
-cd ~/dev/python_test
-ls -a
-```
-
-Kontroller at dine filer (fx app.py) findes i mappen.
-
----
-
-# 2. Opret virtual environment
-
-Hvis der findes en gammel venv, slet den først:
-
-```bash
-rm -rf .venv
-```
-
-Opret en ny venv:
-
-```bash
-python3 -m venv .venv
-```
-
----
-
-# 3. Tjek at venv er korrekt oprettet
-
-```bash
-ls -la .venv/bin
-```
-
-Du skal se:
-
-* python
-* pip
-* activate
-
----
-
-# 4. Aktivér venv
-
-```bash
-source .venv/bin/activate
-```
-
-Når det virker, ændres prompten til at vise (.venv).
-
----
-
-# 5. Installér dependencies
-
-```bash
-pip install streamlit numpy pandas
-```
-
----
-
-# 6. Gem dependencies
-
-```bash
-pip freeze > requirements.txt
-```
-
----
-
-# 7. Kør Streamlit app
-
-```bash
-streamlit run app.py
-```
-
----
-
-# 8. Genbrug projekt senere
-
-Når du åbner projektet igen:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
----
-
-# 9. VS Code setup
-
-Åbn projektet:
-
-```bash
-code .
-```
-
-Vælg interpreter:
-
-* Ctrl + Shift + P
-* Python: Select Interpreter
-* Vælg .venv/bin/python
-
----
-
-# 10. Typiske fejl
-
-Hvis pip ikke virker:
-
-```bash
-python3 -m pip install package
-```
-
-Hvis activate mangler:
-
-Installér venv support:
-
-```bash
-sudo apt install python3-venv
-```
-
----
-
-# Resultat
-
-Du har nu et isoleret Python miljø med reproducible dependencies og en fungerende Streamlit workflow.
+You now have an isolated Python environment with reproducible dependencies and a working Streamlit workflow.Result
