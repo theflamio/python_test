@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 from math import comb
 
-st.title("Wargame Combat Calculator (Binomial Chain)")
+st.title("Flames of war Combat Calculator (Binomial Chain)")
 
 # --- Helpers ---
 def binom_pmf(n, k, p):
@@ -22,8 +22,8 @@ def to_prob(label):
 shots = st.slider("Number of shots", 1, 50, 20)
 
 to_hit = st.selectbox("To hit", ["2+", "3+", "4+", "5+", "6+"])
-to_fire_power = st.selectbox("Fire power", ["1+", "2+", "3+", "4+", "5+", "6+"])
 to_save = st.selectbox("Save (armor / bulletproof)", ["1+", "2+", "3+", "4+", "5+", "6+"])
+to_fire_power = st.selectbox("Fire power", ["1+", "2+", "3+", "4+", "5+", "6+"])
 
 p_hit = to_prob(to_hit)
 p_fire_power = to_prob(to_fire_power)
@@ -74,8 +74,6 @@ st.bar_chart(hist_kills)
 
 # --- Key stats ---
 st.subheader("Key probabilities")
-
-st.write("Tank assault disruption: 2 casualty-equivalents (kills or bailed tanks)")
 
 st.write("Chance of 2+ kills:", round(hist_kills[2:].sum()*100, 2), "%")
 st.write("Chance of 5+ kills:", round(hist_kills[5:].sum()*100, 2), "%")
