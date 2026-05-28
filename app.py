@@ -21,7 +21,9 @@ def to_prob(label):
 # --- Inputs ---
 shots = st.slider("Number of shots", 1, 50, 20)
 
+#TODO: some special rules for to hit when 7 or 8 is needed example: 7+ it is hit on a 6 and then roll again only a 5+ will it be hit
 to_hit = st.selectbox("To hit", ["2+", "3+", "4+", "5+", "6+"])
+#TODO: ADD 7 as it is not possible to save this.
 to_save = st.selectbox("Save (armor / bulletproof)", ["1+", "2+", "3+", "4+", "5+", "6+"])
 to_fire_power = st.selectbox("Fire power", ["1+", "2+", "3+", "4+", "5+", "6+"])
 

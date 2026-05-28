@@ -11,8 +11,8 @@ streamlit run app.py
 ## Basic structure
 import streamlit as st
 
-st.title("Min App")
-st.write("Hej verden")
+st.title("My App")
+st.write("Hello world")
 
 ---
 
@@ -20,33 +20,33 @@ st.write("Hej verden")
 st.title("Titel")
 st.header("Header")
 st.subheader("Subheader")
-st.text("Ren tekst")
+st.text("Clear text")
 st.write("Smart output")
-st.markdown("**Fed tekst** og *kursiv*")
+st.markdown("**Bold tekst** og *Italic*")
 
 ---
 
 ## Inputs
-name = st.text_input("Dit navn")
-age = st.number_input("Alder", 0, 120)
-value = st.slider("Vælg værdi", 0, 100, 50)
-option = st.selectbox("Vælg", ["A", "B", "C"])
+name = st.text_input("your name")
+age = st.number_input("age", 0, 120)
+value = st.slider("chose value", 0, 100, 50)
+option = st.selectbox("chose", ["A", "B", "C"])
 
-if st.button("Klik mig"):
-    st.write("Klikket")
+if st.button("click me"):
+    st.write("Clicked")
 
 ---
 
 ## Layout
 col1, col2 = st.columns(2)
-col1.write("Venstre")
-col2.write("Højre")
+col1.write("Left")
+col2.write("Rigth")
 
 tab1, tab2 = st.tabs(["Tab 1", "Tab 2"])
 with tab1:
-    st.write("Indhold 1")
+    st.write("Content 1")
 with tab2:
-    st.write("Indhold 2")
+    st.write("Content 2")
 
 ---
 
@@ -70,8 +70,8 @@ st.bar_chart(df)
 
 ## Status
 st.success("OK")
-st.error("Fejl")
-st.warning("Advarsel")
+st.error("Error")
+st.warning("Warning")
 st.info("Info")
 
 ---
@@ -83,7 +83,7 @@ st.metric("Score", 87, delta=5)
 
 ## Sidebar
 st.sidebar.title("Menu")
-choice = st.sidebar.selectbox("Vælg", ["A", "B"])
+choice = st.sidebar.selectbox("Chose", ["A", "B"])
 
 ---
 
@@ -105,5 +105,5 @@ def load_data():
 import streamlit as st
 
 st.title("Demo App")
-value = st.slider("Vælg tal", 0, 100)
-st.write("Du valgte:", value)
+value = st.slider("chose number", 0, 100)
+st.write("you chosed:", value)
