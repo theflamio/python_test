@@ -15,7 +15,8 @@ def to_prob(label):
         "3+": 4/6,
         "4+": 3/6,
         "5+": 2/6,
-        "6+": 1/6
+        "6+": 1/6,
+        "7+": 0.0
     }[label]
 
 # --- Inputs ---
@@ -23,8 +24,8 @@ shots = st.slider("Number of shots", 1, 50, 20)
 
 #TODO: some special rules for to hit when 7 or 8 is needed example: 7+ it is hit on a 6 and then roll again only a 5+ will it be hit
 to_hit = st.selectbox("To hit", ["2+", "3+", "4+", "5+", "6+"])
-#TODO: ADD 7 as it is not possible to save this.
-to_save = st.selectbox("Save (armor / bulletproof)", ["1+", "2+", "3+", "4+", "5+", "6+"])
+st.write("Save (inf / armor) 7+ means it cannot be saved")
+to_save = st.selectbox("Save (inf / armor)", ["1+", "2+", "3+", "4+", "5+", "6+", "7+"])
 to_fire_power = st.selectbox("Fire power", ["1+", "2+", "3+", "4+", "5+", "6+"])
 
 p_hit = to_prob(to_hit)
@@ -41,41 +42,46 @@ if (to_save == "1+"):
 else:
     kills = np.random.binomial(failed_saves, p_fire_power)
 
-# --- Outputs ---
-st.subheader("Results hits")
+# -----------------
+# Results
+# -----------------
 
-st.metric("Expected hits", round(np.mean(hits), 2))
-st.metric("Max seen (simulation)", int(np.max(hits)))
-st.metric("Min seen (simulation)", int(np.min(hits)))
+col_left, col_right = st.columns(2)
 
-st.subheader("Probability distribution (hits)")
+# --- Hits outputs ---
+with col_left:
+    with st.container(border=True):
+        st.subheader("Results hits")
 
-hist_hits = np.bincount(hits, minlength=shots+1) / TRIALS
-st.bar_chart(hist_hits)
+        st.metric("Expected hits", round(np.mean(hits), 2))
+        st.metric("Max seen (simulation)", int(np.max(hits)))
+        st.metric("Min seen (simulation)", int(np.min(hits)))
 
-# --- Key stats ---
-st.subheader("Key probabilities")
+        st.subheader("Probability distribution (hits)")
+        hist_hits = np.bincount(hits, minlength=shots+1) / TRIALS
+        st.bar_chart(hist_hits)
 
-st.write("Pinned threshold (infantry platoon): 5+ hits")
-st.write("Pinned threshold (big infantry platoon): 8+ hits")
+        st.subheader("Key probabilities")
+        st.write("Pinned threshold (infantry platoon): 5+ hits")
+        st.write("Pinned threshold (big infantry platoon): 8+ hits")
 
-st.write("Chance of 5+ hits:", round(hist_hits[5:].sum()*100, 2), "%")
-st.write("Chance of 8+ hits:", round(hist_hits[8:].sum()*100, 2), "%")
+        st.write("Chance of 5+ hits:", round(hist_hits[5:].sum()*100, 2), "%")
+        st.write("Chance of 8+ hits:", round(hist_hits[8:].sum()*100, 2), "%")
 
-# --- Outputs ---
-st.subheader("Results kills")
 
-st.metric("Expected kills", round(np.mean(kills), 2))
-st.metric("Max seen (simulation)", int(np.max(kills)))
-st.metric("Min seen (simulation)", int(np.min(kills)))
+# --- Kills outputs ---
+with col_right:
+    with st.container(border=True):
+        st.subheader("Results kills")
 
-st.subheader("Probability distribution (kills)")
+        st.metric("Expected kills", round(np.mean(kills), 2))
+        st.metric("Max seen (simulation)", int(np.max(kills)))
+        st.metric("Min seen (simulation)", int(np.min(kills)))
 
-hist_kills = np.bincount(kills, minlength=shots+1) / TRIALS
-st.bar_chart(hist_kills)
+        st.subheader("Probability distribution (kills)")
+        hist_kills = np.bincount(kills, minlength=shots+1) / TRIALS
+        st.bar_chart(hist_kills)
 
-# --- Key stats ---
-st.subheader("Key probabilities")
-
-st.write("Chance of 2+ kills:", round(hist_kills[2:].sum()*100, 2), "%")
-st.write("Chance of 5+ kills:", round(hist_kills[5:].sum()*100, 2), "%")
+        st.subheader("Key probabilities")
+        st.write("Chance of 2+ kills:", round(hist_kills[2:].sum()*100, 2), "%")
+        st.write("Chance of 5+ kills:", round(hist_kills[5:].sum()*100, 2), "%")

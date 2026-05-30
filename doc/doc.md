@@ -103,7 +103,7 @@ Select interpreter:
 
 * Ctrl + Shift + P
 * Python: Select Interpreter
-* Vælg .venv/bin/python
+* select .venv/bin/python
 
 ---
 
